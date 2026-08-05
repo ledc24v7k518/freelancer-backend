@@ -1,21 +1,21 @@
 {
   "name": "freelancer-backend",
   "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "DC24V7K518 - Le Thi Le",
-  "type": "commonjs",
+  "description": "Backend cho hệ thống kết nối Freelancer với Nhà tuyển dụng - Niên luận CNTT",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.0"
   },
   "devDependencies": {
-    "eslint": "^10.8.0",
-    "eslint-config-prettier": "^10.1.8",
-    "prettier": "^3.9.6"
+    "nodemon": "^3.1.4"
   }
 }
