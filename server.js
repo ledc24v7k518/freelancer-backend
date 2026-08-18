@@ -24,6 +24,8 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/profiles", require("./routes/profileRoutes"));
 app.use("/api/projects", require("./routes/projectRoutes"));
 app.use("/api/applications", require("./routes/applicationRoutes"));
+app.use("/api/categories", require("./routes/categoryRoutes"));
+app.use("/api/admin", require("./routes/adminRoutes"));
 
 app.get("/", (req, res) => {
   res.send("API hệ thống kết nối Freelancer với Nhà tuyển dụng đang chạy");
