@@ -1,4 +1,4 @@
-// Chạy: node scripts/createAdmin.js
+// Chạy cmd: node scripts/createAdmin.js
 // Dùng để tạo tài khoản admin đầu tiên (không thể tạo qua API /api/auth/register)
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -7,7 +7,7 @@ const User = require("../models/User");
 
 const ADMIN_NAME = "Quản trị viên";
 const ADMIN_EMAIL = "admin@freelancer.com";
-const ADMIN_PASSWORD = "admin123"; // đổi mật khẩu này sau khi đăng nhập lần đầu
+const ADMIN_PASSWORD = "admin123";
 
 const run = async () => {
   await mongoose.connect(process.env.MONGO_URI);
