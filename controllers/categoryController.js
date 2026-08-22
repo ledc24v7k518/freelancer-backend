@@ -5,7 +5,7 @@ const Category = require("../models/Category");
 // @access  Public
 exports.getCategories = async (req, res) => {
   try {
-    const categories = await Category.find().sort({ name: 1 });
+    const categories = await Category.find().sort({ name: 1 }); // Sắp xếp theo tên danh mục tăng dần
     res.status(200).json({ count: categories.length, categories });
   } catch (error) {
     res.status(500).json({ message: "Lỗi máy chủ", error: error.message });
