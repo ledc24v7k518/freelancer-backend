@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const projectSchema = new mongoose.Schema(
   {
     employerId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId, // tham chiếu đến User (employer)
       ref: "User",
       required: true,
     },
     categoryId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId, // tham chiếu đến Category
       ref: "Category",
       required: [true, "Vui lòng chọn danh mục cho dự án"],
     },
@@ -27,7 +27,7 @@ const projectSchema = new mongoose.Schema(
       default: "open",
     },
   },
-  { timestamps: true } // tự động thêm createdAt
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Project", projectSchema);
