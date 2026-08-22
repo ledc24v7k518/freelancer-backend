@@ -7,7 +7,6 @@ dotenv.config();
 connectDB();
 
 // Đăng ký tất cả model với Mongoose ngay khi khởi động
-// (cần thiết để .populate() có thể resolve các model được tham chiếu qua ref: "TênModel")
 require("./models/User");
 require("./models/Profile");
 require("./models/Category");
