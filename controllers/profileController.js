@@ -7,7 +7,7 @@ exports.getMyProfile = async (req, res) => {
   try {
     let profile = await Profile.findOne({ userId: req.user._id });
 
-    // Nếu Freelancer chưa từng tạo hồ sơ, tự động tạo hồ sơ rỗng
+    // Nếu chưa có hồ sơ, tạo một hồ sơ trống cho Freelancer
     if (!profile) {
       profile = await Profile.create({ userId: req.user._id });
     }
@@ -52,7 +52,7 @@ exports.updateMyProfile = async (req, res) => {
     const profile = await Profile.findOneAndUpdate(
       { userId: req.user._id },
       { $set: updateData },
-      { new: true, upsert: true, runValidators: true }
+      { new: true, upsert: true, runValidators: true } // Nếu chưa có hồ sơ, tạo mới (upsert: true)
     );
 
     res.status(200).json({
