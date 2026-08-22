@@ -18,7 +18,7 @@ const applicationSchema = new mongoose.Schema(
       default: "pending",
     },
   },
-  { timestamps: { createdAt: "appliedAt", updatedAt: true } }
+  { timestamps: { createdAt: "appliedAt", updatedAt: true } } // Tự động thêm appliedAt và updatedAt
 );
 
 // Một Freelancer chỉ được ứng tuyển 1 lần vào cùng 1 dự án
