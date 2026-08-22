@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
 const ADMIN_NAME = "Quản trị viên";
-const ADMIN_EMAIL = "admin@freelancer.com";
+const ADMIN_EMAIL = "ltle@freelancer.com";
 const ADMIN_PASSWORD = "admin123";
 
 const run = async () => {

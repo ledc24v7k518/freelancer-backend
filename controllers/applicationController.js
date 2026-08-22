@@ -20,7 +20,6 @@ exports.applyToProject = async (req, res) => {
       return res.status(400).json({ message: "Dự án này đã đóng, không thể ứng tuyển" });
     }
 
-    // Tránh Doanh nghiệp tự ứng tuyển vào dự án của chính mình (an toàn logic)
     if (project.employerId.toString() === req.user._id.toString()) {
       return res.status(400).json({ message: "Bạn không thể ứng tuyển vào dự án của chính mình" });
     }
@@ -43,7 +42,7 @@ exports.applyToProject = async (req, res) => {
 
 // @route   GET /api/projects/:id/applications
 // @desc    Doanh nghiệp xem danh sách Freelancer đã ứng tuyển vào dự án của mình
-// @access  Private (Employer - chủ dự án)
+// @access  Private (employer)
 exports.getApplicationsByProject = async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
