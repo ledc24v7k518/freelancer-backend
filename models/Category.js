@@ -17,4 +17,4 @@ const categorySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Category", categorySchema);
+module.exports = mongoose.model("Category", categorySchema); // Tạo model Category để quản lý danh mục dự án
