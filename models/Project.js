@@ -30,4 +30,4 @@ const projectSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Project", projectSchema);
+module.exports = mongoose.model("Project", projectSchema); // Tạo model Project để quản lý dự án
