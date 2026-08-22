@@ -12,7 +12,8 @@ const userSchema = new mongoose.Schema(
       required: [true, "Vui lòng nhập email"],
       unique: true,
       lowercase: true,
-      trim: true,
+      trim: true, // loại bỏ khoảng trắng đầu/cuối
+      match: [/\S+@\S+\.\S+/, "Email không hợp lệ"],
     },
     password: {
       type: String,
