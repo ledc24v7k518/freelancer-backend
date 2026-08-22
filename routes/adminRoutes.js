@@ -1,3 +1,4 @@
+//api/admin/*
 const express = require("express");
 const router = express.Router();
 const { getUsers, toggleLockUser, deleteUser } = require("../controllers/adminController");
