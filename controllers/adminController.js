@@ -20,7 +20,7 @@ exports.getUsers = async (req, res) => {
 // @route   PATCH /api/admin/users/:id/lock
 // @desc    Khóa / mở khóa tài khoản
 // @access  Private (Admin)
-exports.toggleLockUser = async (req, res) => {
+exports.toggleLockUser = async (req, res) => { // Chỉ Admin mới có quyền khóa/mở khóa tài khoản
   try {
     const user = await User.findById(req.params.id);
     if (!user) {
