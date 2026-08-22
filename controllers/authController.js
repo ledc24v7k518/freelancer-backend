@@ -41,7 +41,7 @@ exports.register = async (req, res) => {
       role: role === "employer" ? "employer" : "freelancer",
     });
 
-    const token = generateToken(user._id, user.role);
+    const token = generateToken(user._id, user.role); // Tạo token JWT cho user mới đăng ký
 
     res.status(201).json({
       message: "Đăng ký thành công",
