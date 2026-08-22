@@ -21,15 +21,16 @@ exports.protect = async (req, res, next) => {
       return res.status(403).json({ message: "Tài khoản đã bị khóa" });
     }
 
-    req.user = user; // gắn user vào request để dùng ở các controller phía sau
+    req.user = user; // Gắn thông tin user vào req để các middleware và route handler tiếp theo có thể sử dụng
     next();
   } catch (error) {
     return res.status(401).json({ message: "Token không hợp lệ hoặc đã hết hạn" });
   }
 };
 
-// Kiểm tra vai trò (role) được phép truy cập route
-// Dùng: authorize("employer", "admin")
+// Middleware kiểm tra quyền truy cập dựa trên role của user
+// roles là một mảng các role được phép truy cập, ví dụ: ["admin", "employer"]
+// Nếu user.role không nằm trong roles, trả về lỗi 403
 exports.authorize = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
