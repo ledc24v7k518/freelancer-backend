@@ -4,7 +4,7 @@ const Project = require("../models/Project");
 // @route   POST /api/applications
 // @desc    Freelancer ứng tuyển vào dự án
 // @access  Private (Freelancer)
-exports.applyToProject = async (req, res) => {
+exports.applyToProject = async (req, res) => { // Chỉ Freelancer mới có quyền ứng tuyển
   try {
     const { projectId } = req.body;
 
@@ -32,7 +32,7 @@ exports.applyToProject = async (req, res) => {
 
     res.status(201).json({ message: "Ứng tuyển thành công", application });
   } catch (error) {
-    // Lỗi trùng khóa unique (đã ứng tuyển dự án này trước đó)
+    // Nếu lỗi là do trùng lặp (Freelancer đã ứng tuyển vào dự án này), trả về lỗi 409
     if (error.code === 11000) {
       return res.status(409).json({ message: "Bạn đã ứng tuyển vào dự án này rồi" });
     }
@@ -82,7 +82,7 @@ exports.getMyApplications = async (req, res) => {
   }
 };
 
-// Hàm dùng chung cho accept/reject để tránh lặp code
+// Hàm dùng chung để xử lý chấp nhận hoặc từ chối ứng tuyển
 const updateApplicationStatus = async (req, res, newStatus) => {
   try {
     const application = await Application.findById(req.params.id).populate("projectId");
@@ -90,7 +90,7 @@ const updateApplicationStatus = async (req, res, newStatus) => {
       return res.status(404).json({ message: "Không tìm thấy đơn ứng tuyển" });
     }
 
-    // Chỉ chủ dự án (Doanh nghiệp đã đăng dự án đó) mới được duyệt
+    // Chỉ chủ dự án mới có quyền chấp nhận hoặc từ chối ứng tuyển
     if (application.projectId.employerId.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: "Bạn không có quyền xử lý đơn ứng tuyển này" });
     }
