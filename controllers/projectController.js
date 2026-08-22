@@ -75,7 +75,7 @@ exports.updateProject = async (req, res) => {
       return res.status(404).json({ message: "Không tìm thấy dự án" });
     }
 
-    // Kiểm tra quyền sở hữu: chỉ chủ dự án mới được sửa
+    // Chỉ chủ dự án mới có quyền sửa dự án
     if (project.employerId.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: "Bạn không có quyền sửa dự án này" });
     }
